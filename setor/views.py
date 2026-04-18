@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Setor
 from .serializers import SetorSerializer
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 
 class SetorViewSet(viewsets.ModelViewSet):
     queryset = Setor.objects.all()
@@ -13,3 +13,6 @@ class SetorViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
          return super().get_queryset().filter(status='ativo')
+    
+    def get_permissions(self):
+         return [permissions.IsAdminUser()]

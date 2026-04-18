@@ -11,9 +11,9 @@ class Venda(models.Model):
     valor_total = models.DecimalField(decimal_places=2,max_digits=5,default=000.00)
     produtos = models.ManyToManyField(Produto)
     status = models.CharField(default=STATUS['atv'],choices=STATUS)
-    usuario_fk = models.ForeignKey(
-        Usuario,
-        on_delete=models.CASCADE
-    )
+    # usuario_fk = models.ForeignKey(
+    #     Usuario,
+    #     on_delete=models.CASCADE
+    # )
     #cliente
 

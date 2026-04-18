@@ -15,10 +15,9 @@ class ProdutoViewSet(viewsets.ModelViewSet):
         instance.save()
 
     def get_permissions(self):
-        if self.action in ['create','retrieve','update','partial_update','destroy']:
+        if self.action is not 'list':
             return [permissions.IsAdminUser()]
         return [permissions.AllowAny()]
-
 
     def get_queryset(self):
         return super().get_queryset().filter(status=True)
