@@ -3,11 +3,10 @@ from produto.models import Produto
 from setor.serializers import SetorSerializer
 
 class ProdutoSerializer(serializers.ModelSerializer):
-    setor = serializers.ReadOnlyField(source='setor_fk.nome')
+    setor_detalhes = SetorSerializer(source='setor_fk', read_only=True)
     class Meta:
         model = Produto
-        fields = ['id','nome','tipo','descricao','quantidade','status','setor_fk',
-                  'setor','preco_de_custo','preco_de_venda','data_de_cadastro']
+        fields = '__all__'
 
     def validate_quantidade(self, value):
         if value < 10:

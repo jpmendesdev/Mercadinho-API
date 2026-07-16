@@ -4,7 +4,7 @@ from usuarios.models import Usuario
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fields = '__all__'
+        exclude = ['password']
         # extra_kwargs = {'is_superuser':{'read_only':True},
         #                  'is_staff':{'read_only':True},
         #                  'role':{'read_only':True},}
